@@ -9,9 +9,6 @@ bot = telebot.TeleBot(config.TOKEN)
 @bot.message_handler(commands=['start'])
 def welcome(message):
     bot.send_message(message.chat.id, f'Привет ✌, {message.from_user.first_name}!\nПредлагаю тебе зарегистрироваться!\nСкорее нажимай: /register')
-    # markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    # item1 = types.KeyboardButton("Зарегистрироваться")
-    # markup.add(item1)
 
 @bot.message_handler(commands=['register'])
 def register_message(message):
@@ -25,6 +22,7 @@ def register_message(message):
 def reg_knigt(message):
     bot.send_message(message.chat.id, 'Вы зарегистрировались, как Рыцарь')
     user = User(message.from_user.first_name, Knight.Knight, message.from_user.id)
+
     bot.send_message(message.chat.id, f'{user.userName}, {user.userClass.name}')
 
 @bot.message_handler(commands=['wizard'])
