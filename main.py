@@ -2,7 +2,7 @@ import telebot
 from Classes import Archer, Knight, Wizard
 from UserData.User import User
 import Data.Extensions.registration as reg
-import Data.Extensions.CheckUser as checkUser
+import Data.Extensions.checkUser as checkUser
 import config
 
 bot = telebot.TeleBot(config.TOKEN)

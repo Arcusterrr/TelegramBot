@@ -1,5 +1,5 @@
 import Data.DataBaseConnection as db
-import Data.Extensions.CheckUser as checkUser
+import Data.Extensions.checkUser as checkUser
 
 def registration(name_user, class_user, telegramid_user):
     if not checkUser.checkUser(telegramid_user):
