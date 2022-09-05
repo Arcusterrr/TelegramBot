@@ -4,6 +4,7 @@ from UserData.User import User
 import Data.Extensions.registration as reg
 import Data.Extensions.checkUser as checkUser
 import config
+import Buttons
 
 bot = telebot.TeleBot(config.TOKEN)
 
@@ -29,19 +30,23 @@ def register_message(message):
 
 @bot.message_handler(commands=['knight'])
 def reg_knigt(message):
+    markup = Buttons.Buttons()
     user = User(message.from_user.first_name, Knight.Knight, message.from_user.id)
-    bot.send_message(message.chat.id, reg.registration(user.userName, user.userClass.name, user.userTelegramId))
+    bot.send_message(message.chat.id, reg.registration(user), reply_markup=markup)
 
 @bot.message_handler(commands=['wizard'])
 def reg_wizard(message):
+    markup = Buttons.Buttons()
     user = User(message.from_user.first_name, Wizard.Wizard, message.from_user.id)
-    bot.send_message(message.chat.id, reg.registration(user.userName, user.userClass.name, user.userTelegramId))
+    bot.send_message(message.chat.id, reg.registration(user), reply_markup=markup)
+
 
 
 @bot.message_handler(commands=['archer'])
 def reg_archer(message):
+    markup = Buttons.Buttons()
     user = User(message.from_user.first_name, Archer.Archer, message.from_user.id)
-    bot.send_message(message.chat.id, reg.registration(user.userName, user.userClass.name, user.userTelegramId))
+    bot.send_message(message.chat.id, reg.registration(user), reply_markup=markup)
 
 
 bot.infinity_polling()
